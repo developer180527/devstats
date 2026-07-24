@@ -1,0 +1,25 @@
+[package]
+name = "devstat"
+version = "0.2.0"
+edition = "2021"
+rust-version = "1.70"
+description = "Codebase statistics that tell project code apart from vendored, generated and build output"
+authors = ["devstat contributors"]
+license = "MIT"
+readme = "README.md"
+keywords = ["cli", "loc", "statistics", "codebase", "metrics"]
+categories = ["command-line-utilities", "development-tools"]
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+ignore = "0.4"          # Ultra-fast, gitignore-aware directory traversal
+globset = "0.4"          # Glob matching for --include / --exclude
+comfy-table = "7"        # Terminal dynamic table renderer
+colored = "2"            # Terminal ANSI color formatting
+rayon = "1"              # Parallel iterator processing
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
